@@ -155,7 +155,7 @@ TRANSCRIPT:
 """
 
     res = model.generate_content(
-        [prompt, `This is transcript content ${transcript_text}`],
+        [prompt, f"This is transcript content: {transcript_text}"],
         generation_config=genai.types.GenerationConfig(
             temperature=1,
         )
