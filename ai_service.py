@@ -122,6 +122,7 @@ Follow the structure below very strictly:
    - Present them in clear bullet points.
    - Each point should be precise, capturing essential details.
    - Do not add unnecessary details, only the key information.
+    - Use numbered format (1, 2, 3, …).
 
 3. Action Items
    - List clear, concise, and actionable tasks derived from the discussion.
