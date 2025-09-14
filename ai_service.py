@@ -147,6 +147,8 @@ Rules:
 - Never skip a section, even if content is missing.
 - Always keep the output well-formatted with headings and spacing.
 - Output should look neat and professional, similar to a business meeting summary.
+- Always respond in ENGLISH ONLY. Never use any other language under any circumstances.
+
 
 TRANSCRIPT:
 
