@@ -158,6 +158,7 @@ TRANSCRIPT:
         [prompt, f"This is transcript content: {transcript_text}"],
         generation_config=genai.types.GenerationConfig(
             temperature=1,
+            max_output_tokens=400000,
         )
     )
 
