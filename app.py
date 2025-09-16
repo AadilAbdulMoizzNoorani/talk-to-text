@@ -11,19 +11,7 @@ from ai_service import api,get_history,delete_single_history,delete_multiple_his
 
 
 app = Flask(__name__)
-CORS(app, resources={
-    r"/*": {
-        "origins": [
-            "http://localhost:5500",        # local server
-            "http://127.0.0.1:5500",        # local server alternate
-            "talk-to-text-7m35.vercel.app"  # vercel domain
-        ],
-        "allow_headers": ["Content-Type", "Authorization"],
-        "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-        "supports_credentials": True
-    }
-})
-
+CORS(app)
 
 # JWT secret key (production me env variable use karo)
 app.config["JWT_SECRET_KEY"] = "super-secret-key"
@@ -121,5 +109,3 @@ def logout_route():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
