@@ -8,10 +8,10 @@ import os
 from auth import register_user, login_user, get_profile, edit_profile,logout_user, bcrypt
 # AI Service
 from ai_service import api,get_history,delete_single_history,delete_multiple_history,delete_all_history
-
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})  # sab origins allow
 
 # JWT secret key (production me env variable use karo)
 app.config["JWT_SECRET_KEY"] = "super-secret-key"
@@ -59,21 +59,21 @@ def update_profile():
     return edit_profile(user_id, data)
 
 
-# -------- Audio API --------
+UPLOAD_FOLDER = "uploads"
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
 @app.route("/chat/", methods=["POST"])
 def appi_post():
-    
     if "audio" not in request.files:
         return jsonify({"error": "No audio file provided"}), 400
 
     audio = request.files["audio"]
-
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as temp_audio_file:
-        audio.save(temp_audio_file)
-        temp_path = temp_audio_file.name
+    filename = secure_filename(audio.filename)
+    save_path = os.path.join(UPLOAD_FOLDER, filename)
+    audio.save(save_path)  # File permanent folder mein save ho gayi
 
     try:
-        result = api(temp_path)
+        result = api(save_path)  # Ab AI ko ye path send karo
         return jsonify({"response": result})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
