@@ -16,7 +16,7 @@ CORS(app, resources={
         "origins": [
             "http://localhost:5500",        # local server
             "http://127.0.0.1:5500",        # local server alternate
-            "https://talk-to-text-p8bl.vercel.app"  # vercel domain
+            "talk-to-text-7m35.vercel.app"  # vercel domain
         ],
         "allow_headers": ["Content-Type", "Authorization"],
         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -121,4 +121,5 @@ def logout_route():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
